@@ -1,0 +1,22 @@
+class StateExample extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = { active: false};
+  }
+
+  toggle() {
+    this.setState({ active: !this.state.active});
+  }
+// Notice how we must use ".bind(this") to bind the Button to the context of the class
+  render() {
+    return (
+      <center>
+        <input type="checkbox" checked={this.state.active} />
+        <button onClick={this.toggle.bind(this)}>Toggle!</button>
+      </center>
+    );
+  }
+}
+// A hook to our playgound
+// Not needed in 'real' react code
+render(<StateExample />);

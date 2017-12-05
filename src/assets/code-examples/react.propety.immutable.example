@@ -1,0 +1,28 @@
+class HelloComponent extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  changeProps(){
+    // This is not possible - because props are immutable
+    this.props.name = "Susan";
+  }
+
+  render() {
+    {this.changeProps()}
+    return <h3>Hello {this.props.name}</h3>;
+  }
+}
+
+class Container extends React.Component {
+  render() {
+    return (
+      <center>
+        <HelloComponent name="Everybody!"/>
+      </center>
+    );
+  }
+}
+// A hook to our playgound
+// Not needed in 'real' react code
+render(<Container />);

@@ -1,0 +1,45 @@
+class ParentComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { current: 0 };
+  }
+
+  componentWillMount() {
+    console.log("1. componentWillMount");
+  }
+
+  newValue(value) {
+    this.setState({ current: this.state.current + value });
+  }
+  // Notice how we must use ".bind(this") to bind the newValue method to the context of the class
+  render() {
+    // render is a lifecycle method!
+    console.log("2. render");
+    return (
+      <center>
+        <ChildComponent newValue={this.newValue.bind(this)} />
+        <h1>{this.state.current}</h1>
+      </center>
+    );
+  }
+
+  componentDidMount() {
+    console.log("3. componentDidMount");
+  }
+
+  componentWillUnmount() {
+    console.log("4. componentWillUnmount");
+  }
+}
+
+class ChildComponent extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return <button onClick={() => this.props.newValue(1)}>Increment</button>;
+  }
+}
+// A hook to our playgound
+// Not needed in 'real' react code
+render(<ParentComponent />);

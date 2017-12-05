@@ -1,0 +1,10 @@
+class Hello extends React.Component {
+  render() {
+    return (
+      <h3>Hello React!</h3>
+    );
+  }
+}
+// A hook to our playgound
+// Not needed in 'real' react code
+render(<Hello />);

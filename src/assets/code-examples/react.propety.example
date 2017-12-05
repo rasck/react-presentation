@@ -1,0 +1,22 @@
+class HelloComponent extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return <h3>Hello {this.props.name}</h3>;
+  }
+}
+
+class Container extends React.Component {
+  render() {
+    return (
+      <center>
+        <HelloComponent name="Class"/>
+      </center>
+    );
+  }
+}
+// A hook to our playgound
+// Not needed in 'real' react code
+render(<Container />);
